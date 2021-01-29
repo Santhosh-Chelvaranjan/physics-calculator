@@ -1,11 +1,6 @@
 function Kin_1D_Calculation(){
   //declare variables
-  var i;
-  var f;
-  var a;
-  var angle;
-  var t;
-  var d;
+  var i,f,a,angle,t,d;
 
 
   //Checks if variable exits
@@ -109,11 +104,11 @@ function Kin_1D_Calculation(){
     }
   }
 
-  document.getElementById('kin_1d_display').innerHTML = initV_B + " initial velocity: " + i+
-   "<br />" + finalV_B +" final velocity: " + f +
-   "<br />" +acc_B + " acceleration:" + a+
-   "<br />" +time_B + " time: " + t+
-   "<br />" + dist_B +" distance: " + d
+  document.getElementById('kin_1d_display').innerHTML =  " initial velocity: " + i+
+   "<br />" + " final velocity: " + f +
+   "<br />" + " acceleration:" + a+
+   "<br />" + " time: " + t+
+   "<br />" + " distance: " + d
 }
 
 function Kin_2D_Calculation(){
@@ -490,12 +485,7 @@ function Momentum_Calculation(){
 
 function Angular_Calculation(){
   //declare variables
-  var i;
-  var f;
-  var a;
-  var t;
-  var d;
-  var r;
+  var i,f,a,t,d,r;
 
 
   //Checks if variable exits
@@ -597,26 +587,28 @@ function Angular_Calculation(){
 
   if (rad_B==true) {
     var arc = r*d;
-    var v1 = r*i
+    var v1 = r*i;
     var v2 = r*f;
     var at = r*a;
-    var ac1 = Math.pow(i,2)*r;
+    var ac1 = Math.pow(i,2)/r;
+    var ac2 = Math.pow(f,2)/r;
+    var atot1, atot2;
+
     if (ac1!=0){
-      var atot1 = Math.sqrt(Math.pow(at,2)+Math.pow(ac1,2));
+      atot1 = Math.sqrt(Math.pow(at,2)+Math.pow(ac1,2));
     }
-    var ac2 = Math.pow(f,2)*r;
     if (ac2!=0){
-      var atot2 = Math.sqrt(Math.pow(at,2)+Math.pow(ac2,2));
+      atot2 = Math.sqrt(Math.pow(at,2)+Math.pow(ac2,2));
     }
   }
 
 
-  document.getElementById('angular_display').innerHTML = initV_B + " initial angular velocity: " + i+
-   "<br />" + finalV_B +" final angular velocity: " + f +
-   "<br />" +acc_B + " angular acceleration:" + a +
-   "<br />" +time_B + " time: " + t+
-   "<br />" + dist_B +" angular displacement: " + d +
-   "<br />" +rad_B + " radius:" + r +
+  document.getElementById('angular_display').innerHTML = " initial angular velocity: " + i+
+   "<br />" + " final angular velocity: " + f +
+   "<br />" + " angular acceleration:" + a +
+   "<br />" + " time: " + t+
+   "<br />" + " angular displacement: " + d +
+   "<br />" + " radius:" + r +
    "<br />" + " arc length:" + arc +
    "<br />" + " velcoity1:" + v1 +
    "<br />" + " velocity2:" + v2 +
@@ -625,5 +617,96 @@ function Angular_Calculation(){
    "<br />" + " centeripetal acceleration2:" + ac2 +
    "<br />" + " total acceleration1:" + atot1 +
    "<br />" + " total acceleration2:" + atot2
+
+}
+
+function Electric_Forces_Calculation() {
+  var q1;
+  var q2;
+  var r;
+
+  var q1_b = new Boolean(false);
+  var q2_b = new Boolean(false);
+  var r_b = new Boolean(false);
+
+  ///solve for variables
+  var f;
+  var k=8.98*Math.pow(10,9);
+
+  if (document.getElementById("e_q1").value){
+    q1 = +document.getElementById("e_q1").value;
+    q1_b = true;
+  }
+  if (document.getElementById("e_q2").value){
+    q2 = +document.getElementById("e_q2").value;
+    q2_b = true;
+  }
+  if (document.getElementById("e_distance").value){
+    r = +document.getElementById("e_distance").value;
+    r_b = true;
+  }
+
+  //calculations
+  f = (k*q1*q2)/Math.pow(r,2);
+
+  document.getElementById('electric_forces_display').innerHTML = " Force: " + f.toExponential() +
+   "<br />"  +" q1: " + q1 +
+   "<br />" + " q2: " + q2+
+   "<br />" + " Distance:" + r
+
+
+
+
+}
+
+function myFunction1() {
+  remove()
+  document.getElementById("panel1").style.display="block"
+}
+
+function myFunction2() {
+  remove()
+  document.getElementById("panel2").style.display="block"
+}
+
+function myFunction3() {
+  remove()
+  document.getElementById("panel3").style.display="block"
+}
+
+function myFunction4() {
+  remove()
+  document.getElementById("panel4").style.display="block"
+}
+
+function myFunction5() {
+  remove()
+  document.getElementById("panel5").style.display="block"
+}
+
+function myFunction6() {
+  remove()
+  document.getElementById("panel6").style.display="block"
+}
+
+
+function remove(){
+  var final;
+  for (i=1; i < 6; i++){
+    final = "panel"+i;
+    document.getElementById(final).style.display="none"
+  }
+}
+
+function activePage(elem) {
+    // get all 'a' elements
+    var a = document.getElementsByTagName('a');
+    // loop through all 'a' elements
+    for (i = 0; i < a.length; i++) {
+        // Remove the class 'active' if it exists
+        a[i].classList.remove('active')
+    }
+    // add 'active' classs to the element that was clicked
+    elem.classList.add('active');
 
 }
