@@ -4,261 +4,335 @@
     <meta charset="utf-8">
     <title>Winter_Project</title>
   </head>
+  <style>
+    h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 2px;
+}
+  body {
+    margin: 0;
+    border:0;
+    background-color:#EAE7DC
+  }
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 25%;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+  }
+  li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  li a.active {
+    background-color: #99CC99;
+    color: white;
+  }
+  li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+  }
+
+  </style>
+
   <body>
     <script src="physics_calculator.js">
-
     </script>
 
-    <div class="header" style="background-color:Purple">
+    <div class="header" style="background-color:#CC99CC;margin:">
       <h1>Physics Calculator</h1>
     </div>
-    <div class="menu">
+
+    <div id="linkwrapper">
+      <ul>
+        <li><a id="a-home1" class="active" class="flip" href="#panel1" onclick="activePage(this);myFunction1()">1D Kinimatics</a></li>
+        <li><a id="a-home2" class="flip" href="#panel2" onclick="activePage(this);myFunction2()" value="panel2">2D Kinimatics</a></li>
+        <li><a id="a-home3" class="flip" href="#panel3" onclick="activePage(this);myFunction3()">1D Forces</a></li>
+        <li><a id="a-home4" class="flip" href="#panel4" onclick="activePage(this);myFunction4()">Momentum</a></li>
+        <li><a id="a-home5" class="flip" href="#panel5" onclick="activePage(this);myFunction5()">Rotational Kinimatics</a></li>
+        <li><a id="a-home6" class="flip" href="#panel6" onclick="activePage(this);myFunction6()">Electric Forces</a></li>
+      </ul>
     </div>
 
+    <div style="margin-left:25%;padding:1px 16px;height: 100px; " id="calculations">
+      <div class="hide" id="panel1">
+        <h3>1D Kinimatics:</h3>
 
-    <div class="1D_Kinimatics">
-      <h3>1D Kinimatics:</h3>
-      <div class="inputs">
+        <div class="inputs">
 
-        <div class="Initial_Velocity">
-          <label for="Initial_Velocity">Initial Velocity:</label>
-          <input type="value" id="initial_velocity" >
+          <div class="Initial_Velocity">
+            <label for="Initial_Velocity">Initial Velocity:</label>
+            <input type="value" id="initial_velocity" >
+          </div>
+
+          <div class="Final_Velocity">
+            <label for="Final_Velocity">Final Velocity:</label>
+            <input type="value" id="final_velocity">
+          </div>
+
+          <div class="Acceleration">
+            <label for="Acceleration">Acceleration:</label>
+            <input type="value" id="acceleration" >
+
+            <label for="Angle">Angle:</label>
+            <input type="value" id="angle">
+          </div>
+
+          <div class="Time">
+            <label for="Time">Time:</label>
+            <input type="value" id="time">
+          </div>
+
+          <div class="Distance">
+            <label for="Distance">Distance:</label>
+            <input type="value" id="distance">
+          </div>
+
         </div>
-
-        <div class="Final_Velocity">
-          <label for="Final_Velocity">Final Velocity:</label>
-          <input type="value" id="final_velocity">
-        </div>
-
-        <div class="Acceleration">
-          <label for="Acceleration">Acceleration:</label>
-          <input type="value" id="acceleration" >
-
-          <label for="Angle">Angle:</label>
-          <input type="value" id="angle">
-        </div>
-
-        <div class="Time">
-          <label for="Time">Time:</label>
-          <input type="value" id="time">
-        </div>
-
-        <div class="Distance">
-          <label for="Distance">Distance:</label>
-          <input type="value" id="distance">
-        </div>
-
-      </div>
-      <div class="button">
-        <button type="button" onclick="Kin_1D_Calculation()" name="Calculate">Calculate!</button>
-      </div>
-      <div class="answer">
-        <p id='kin_1d_display'> </p>
-
-      </div>
-    </div>
-    <div class="2D_Kinimatics">
-      <h3>2D Kinimatics:</h3>
-
-      <div class="inputs">
-
-        <div class="T_Inital Velocity">
-          <label for="T_Inital Velocity">Initial Velocity:</label>
-          <input type="value" id="t_initial_velocity" >
-        </div>
-
-        <div class="T_Final Velocity">
-          <label for="T_Final Velocity">Final Velocity:</label>
-          <input type="value" id="t_final_velocity" >
-        </div>
-
-        <div class="Time">
-          <label for="Time">Time:</label>
-          <input type="value" id="time_2d" >
-        </div>
-
-        <div class="Angle">
-          <label for="Angle">Angle:</label>
-          <input type="value" id="angle_2d" >
-        </div>
-
-        <h4>x direction:</h4>
-
-        <div class="Velocity">
-          <label for="Velcocity">Velocity:</label>
-          <input type="value" id="x_velocity" >
-        </div>
-
-        <div class="Length">
-          <label for="Length">Length:</label>
-          <input type="value" id="x_length" >
-        </div>
-
-        <h4>y direction:</h4>
-
-        <div class="Initial_Velocity">
-          <label for="Initial_Velocity">Initial Velocity:</label>
-          <input type="value" id="y_initial_velocity">
-        </div>
-
-        <div class="Final_Velocity">
-          <label for="Final_Velocity">Final Velocity:</label>
-          <input type="value" id="y_final_velocity">
-        </div>
-
-        <div class="Acceleration">
-          <label for="Acceleration">Acceleration:</label>
-          <input type="value" id="y_acceleration" value="-9.8">
-        </div>
-
-        <div class="Height">
-          <label for="Height">Height:</label>
-          <input type="value" id="y_height">
-        </div>
-
         <div class="button">
-          <button type="button" onclick="Kin_2D_Calculation()" name="Calculate">Calculate!</button>
+          <button type="button" onclick="Kin_1D_Calculation()" name="Calculate">Calculate!</button>
         </div>
         <div class="answer">
-          <p id='kin_2d_display'> </p>
+          <p id='kin_1d_display'> </p>
 
         </div>
-
       </div>
-    </div>
-    <div class="1D_Forces">
-      <h3>1D Forces:</h3>
-      <div class="inputs">
+      <div class="hide" id="panel2" style="display:none">
+        <h3>2D Kinimatics:</h3>
 
-        <div class="Mass">
-          <label for="Mass">Mass:</label>
-          <input type="value" id="mass" >
+        <div class="inputs">
+
+          <div class="T_Inital Velocity">
+            <label for="T_Inital Velocity">Initial Velocity:</label>
+            <input type="value" id="t_initial_velocity" >
+          </div>
+
+          <div class="T_Final Velocity">
+            <label for="T_Final Velocity">Final Velocity:</label>
+            <input type="value" id="t_final_velocity" >
+          </div>
+
+          <div class="Time">
+            <label for="Time">Time:</label>
+            <input type="value" id="time_2d" >
+          </div>
+
+          <div class="Angle">
+            <label for="Angle">Angle:</label>
+            <input type="value" id="angle_2d" >
+          </div>
+
+          <h4>x direction:</h4>
+
+          <div class="Velocity">
+            <label for="Velcocity">Velocity:</label>
+            <input type="value" id="x_velocity" >
+          </div>
+
+          <div class="Length">
+            <label for="Length">Length:</label>
+            <input type="value" id="x_length" >
+          </div>
+
+          <h4>y direction:</h4>
+
+          <div class="Initial_Velocity">
+            <label for="Initial_Velocity">Initial Velocity:</label>
+            <input type="value" id="y_initial_velocity">
+          </div>
+
+          <div class="Final_Velocity">
+            <label for="Final_Velocity">Final Velocity:</label>
+            <input type="value" id="y_final_velocity">
+          </div>
+
+          <div class="Acceleration">
+            <label for="Acceleration">Acceleration:</label>
+            <input type="value" id="y_acceleration" value="-9.8">
+          </div>
+
+          <div class="Height">
+            <label for="Height">Height:</label>
+            <input type="value" id="y_height">
+          </div>
+
+          <div class="button">
+            <button type="button" onclick="Kin_2D_Calculation()" name="Calculate">Calculate!</button>
+          </div>
+          <div class="answer">
+            <p id='kin_2d_display'> </p>
+
+          </div>
+
         </div>
-
-        <div class="Acceleration2">
-          <label for="Acceleration2">Acceleration:</label>
-          <input type="value" id="acceleration2">
-        </div>
-
-        <div class="Coefficent of friction">
-          <label for="Coefficent of friction)">Coefficent of friction:</label>
-          <input type="value" id="coefficent_of_friction" >
-        </div>
-
       </div>
+      <div class="hide" id="panel3" style="display:none">
+        <h3>1D Forces:</h3>
+        <div class="inputs">
 
-      <div class="button2">
-        <button type="button" onclick="Forces_Cacluation()" name="Calculate">Calculate!</button>
-      </div>
-      <div class="answer">
-        <p id='forces_display'> </p>
-      </div>
+          <div class="Mass">
+            <label for="Mass">Mass:</label>
+            <input type="value" id="mass" >
+          </div>
 
-    </div>
-    <div class="Momentum">
-      <h3>Momentum</h3>
-      <div class="inputs">
+          <div class="Acceleration2">
+            <label for="Acceleration2">Acceleration:</label>
+            <input type="value" id="acceleration2">
+          </div>
 
-        <div class="Collision">
-          <input type="radio" id="m_sticking" name="Collision" value="Sticking">
-          <label for="Sticking">Sticking</label><br>
-          <input type="radio" id="m_recoil" name="Collision" value="Recoil">
-          <label for="Recoil">Recoil</label><br>
+          <div class="Coefficent of friction">
+            <label for="Coefficent of friction)">Coefficent of friction:</label>
+            <input type="value" id="coefficent_of_friction" >
+          </div>
+
         </div>
 
-        <div class="Mass1">
-          <label for="Mass1">Mass1:</label>
-          <input type="value" id="m_mass1" >
-        </div>
-
-        <div class="Mass2">
-          <label for="Mass2">Mass2:</label>
-          <input type="value" id="m_mass2" >
-        </div>
-
-        <div class="TotalMass">
-          <label for="TotalMass">Total Mass:</label>
-          <input type="value" id="m_Tmass" >
-        </div>
-
-        <div class="Velcocity1">
-          <label for="Velocity1">Initial Velcocity1:</label>
-          <input type="value" id="m_velocity1" >
-        </div>
-
-        <div class="Velocity2">
-          <label for="Velocity2">Initial Velocity2:</label>
-          <input type="value" id="m_velocity2" >
-        </div>
-
-        <div class="TotalVelocity">
-          <label for="TotalVelocity">(sticking) Final Velocity:</label>
-          <input type="value" id="m_Tvelocity" >
-        </div>
-
-        <div class="FinalVelocity1">
-          <label for="FinalVelocity1">(recoil) Final Velocity1:</label>
-          <input type="value" id="m_Tvelocity1" >
-        </div>
-
-        <div class="FinalVelocity2">
-          <label for="FinalVelocity2">(recoil) Final Velocity2:</label>
-          <input type="value" id="m_Tvelocity2" >
-        </div>
-
-
-        <div class="button">
-          <button type="button" onclick="Momentum_Calculation()" name="Calculate">Calculate!</button>
+        <div class="button2">
+          <button type="button" onclick="Forces_Cacluation()" name="Calculate">Calculate!</button>
         </div>
         <div class="answer">
-          <p id='momentum_display'> </p>
+          <p id='forces_display'> </p>
         </div>
 
+      </div>
+      <div class="hide" id="panel4" style="display:none">
+        <h3>Momentum</h3>
+        <div class="inputs">
+
+          <div class="Collision">
+            <input type="radio" id="m_sticking" name="Collision" value="Sticking">
+            <label for="Sticking">Sticking</label><br>
+            <input type="radio" id="m_recoil" name="Collision" value="Recoil">
+            <label for="Recoil">Recoil</label><br>
+          </div>
+
+          <div class="Mass1">
+            <label for="Mass1">Mass1:</label>
+            <input type="value" id="m_mass1" >
+          </div>
+
+          <div class="Mass2">
+            <label for="Mass2">Mass2:</label>
+            <input type="value" id="m_mass2" >
+          </div>
+
+          <div class="TotalMass">
+            <label for="TotalMass">Total Mass:</label>
+            <input type="value" id="m_Tmass" >
+          </div>
+
+          <div class="Velcocity1">
+            <label for="Velocity1">Initial Velcocity1:</label>
+            <input type="value" id="m_velocity1" >
+          </div>
+
+          <div class="Velocity2">
+            <label for="Velocity2">Initial Velocity2:</label>
+            <input type="value" id="m_velocity2" >
+          </div>
+
+          <div class="TotalVelocity">
+            <label for="TotalVelocity">(sticking) Final Velocity:</label>
+            <input type="value" id="m_Tvelocity" >
+          </div>
+
+          <div class="FinalVelocity1">
+            <label for="FinalVelocity1">(recoil) Final Velocity1:</label>
+            <input type="value" id="m_Tvelocity1" >
+          </div>
+
+          <div class="FinalVelocity2">
+            <label for="FinalVelocity2">(recoil) Final Velocity2:</label>
+            <input type="value" id="m_Tvelocity2" >
+          </div>
+
+
+          <div class="button">
+            <button type="button" onclick="Momentum_Calculation()" name="Calculate">Calculate!</button>
+          </div>
+          <div class="answer">
+            <p id='momentum_display'> </p>
+          </div>
+
+        </div>
+      </div>
+      <div class="hide" id="panel5" style="display:none">
+        <h3>Rotational Kinimatics:</h3>
+        <div class="inputs">
+
+          <div class="Initial_Angular_Velocity">
+            <label for="Initial_Angular_Velocity">Initial Angular Velocity:</label>
+            <input type="value" id="r_initial_velocity" >
+          </div>
+
+          <div class="Final_Angular_Velocity">
+            <label for="Final_Velocity">Final Angular Velocity:</label>
+            <input type="value" id="r_final_velocity">
+          </div>
+
+          <div class="Angular_Acceleration">
+            <label for="Angular_Acceleration">Angular Acceleration:</label>
+            <input type="value" id="r_acceleration" >
+          </div>
+
+          <div class="Time">
+            <label for="Time">Time:</label>
+            <input type="value" id="r_time">
+          </div>
+
+          <div class="Angular_Displacement">
+            <label for="Angular_Displacement">Angular Displacement:</label>
+            <input type="value" id="r_displacement">
+          </div>
+
+          <div class="Radius">
+            <label for="Radius">Radius:</label>
+            <input type="value" id="r_radius">
+          </div>
+
+        </div>
+        <div class="button">
+          <button type="button" onclick="Angular_Calculation()" name="Calculate">Calculate!</button>
+        </div>
+        <div class="answer">
+          <p id='angular_display'> </p>
+
+        </div>
+      </div>
+      <div class="hide" id="panel6" style="display:none">
+        <h3>Electric Forces:</h3>
+
+        <div class="inputs">
+
+          <div class="Q1">
+            <label for="Q1">Charge 1:</label>
+            <input type="value" id="e_q1" >
+          </div>
+
+          <div class="Q2">
+            <label for="Q2">Charge 2:</label>
+            <input type="value" id="e_q2">
+          </div>
+
+          <div class="Distance">
+            <label for="Distance">Distance:</label>
+            <input type="value" id="e_distance" >
+
+        </div>
+        <div class="button">
+          <button type="button" onclick="Electric_Forces_Calculation()" name="Calculate">Calculate!</button>
+        </div>
+        <div class="answer">
+          <p id='electric_forces_display'> </p>
+
+        </div>
       </div>
     </div>
-    <div class="Rotational_Kinimatics">
-      <h3>Rotational Kinimatics:</h3>
-      <div class="inputs">
-
-        <div class="Initial_Angular_Velocity">
-          <label for="Initial_Angular_Velocity">Initial Angular Velocity:</label>
-          <input type="value" id="r_initial_velocity" >
-        </div>
-
-        <div class="Final_Angular_Velocity">
-          <label for="Final_Velocity">Final Angular Velocity:</label>
-          <input type="value" id="r_final_velocity">
-        </div>
-
-        <div class="Angular_Acceleration">
-          <label for="Angular_Acceleration">Angular Acceleration:</label>
-          <input type="value" id="r_acceleration" >
-        </div>
-
-        <div class="Time">
-          <label for="Time">Time:</label>
-          <input type="value" id="r_time">
-        </div>
-
-        <div class="Angular_Displacement">
-          <label for="Angular_Displacement">Angular Displacement:</label>
-          <input type="value" id="r_displacement">
-        </div>
-
-        <div class="Radius">
-          <label for="Radius">Radius:</label>
-          <input type="value" id="r_radius">
-        </div>
-
-      </div>
-      <div class="button">
-        <button type="button" onclick="Angular_Calculation()" name="Calculate">Calculate!</button>
-      </div>
-      <div class="answer">
-        <p id='angular_display'> </p>
-
-      </div>
-    </div>
-
   </body>
 </html>
